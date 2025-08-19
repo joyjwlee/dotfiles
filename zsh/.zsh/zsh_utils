@@ -1,0 +1,69 @@
+# utilities -- custom aliases and functions
+
+# ====================================== #
+# ==== CUSTOM ALIASES AND FUNCTIONS ==== #
+# ====================================== #
+
+# Custom aliases
+# Horizontal line
+alias hr='echo -e "\033[1A\033[K\033[1A"; printf '—%.0s' {1..$COLUMNS}'
+
+# Replace `ls` with `eza --long`; used to be exa
+alias ls='eza --long'
+
+# My IP
+function myip {
+  ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+  ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+}
+
+# Copy CWD
+function copydir {
+  pwd | tr -d "\r\n" | pbcopy
+}
+
+# Copy file
+function copyfile {
+  emulate -L zsh
+  clipcopy $1
+}
+
+# Open current directory in finder
+alias ofd='open_command $PWD'
+function open_command() {
+  open "$@"
+}
+
+# cd to git repos
+alias cdg='cd ~/Desktop/git_repos'
+
+# Prettier Git Log
+alias gl='git log --graph --oneline --decorate'
+
+# Hacking go brrr
+alias hackall='docker run --rm -it bcbcarl/hollywood'
+
+# Open VSCode in current directory
+alias vsc='code .'
+
+# bat instead of cat
+alias cat='bat --paging=never --theme=OneHalfDark'
+
+# funni cli tool
+eval $(thefuck --alias)
+alias wtf='fuck'
+
+# Quartz
+alias kcb='npx quartz build --serve'
+alias kcd='npx quartz sync'
+
+# ==== PYTHON VENV ==== #
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init >/dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# ==== AUTOCOMPLETE ==== #
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

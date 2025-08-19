@@ -1,0 +1,122 @@
+# ==== FULL SCREEN ==== #
+
+# Set full screen
+osascript -e 'tell application "Terminal" to set zoomed of front window to true'
+
+
+# ==== PROMPT ==== #
+
+# Show git branch if in a git repo
+parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/(\1) /p'
+}
+
+# Set prompt color
+setopt PROMPT_SUBST
+# PROMPT='%U%F{51}%n%f%u %1~ %F{51}$(parse_git_branch )%f%# '
+PROMPT='[%*] %U%F{51}%n%f%u %1~ %F{51}$(parse_git_branch )%f%# '
+
+
+# ==== CUSTOM ALIASES AND FUNCTIONS ==== #
+
+# Custom aliases
+# horizontal line
+alias hr='echo -e "\033[1A\033[K\033[1A"; printf '—%.0s' {1..$COLUMNS}'
+
+# Replace `ls` with `eza --long`; used to be exa
+alias ls='eza --long'
+
+# My IP
+function myip {
+    ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+	ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+}
+
+# Copy CWD
+function copydir {
+  pwd | tr -d "\r\n" | pbcopy
+}
+
+# Copy file
+function copyfile {
+  emulate -L zsh
+  clipcopy $1
+}
+
+# Open current directory in finder
+alias ofd='open_command $PWD'
+function open_command() {
+  open "$@"
+}
+# function open_command() {
+#   local open_cmd
+#   case "$OSTYPE" in
+#     darwin*)  open_cmd='open' ;;
+#     cygwin*)  open_cmd='cygstart' ;;
+#     linux*)   [[ "$(uname -r)" != *icrosoft* ]] && open_cmd='nohup xdg-open' || {
+#                 open_cmd='cmd.exe /c start ""'
+#                 [[ -e "$1" ]] && { 1="$(wslpath -w "${1:a}")" || return 1 }
+#               } ;;
+#     msys*)    open_cmd='start ""' ;;
+#     *)        echo "Platform $OSTYPE not supported"
+#               return 1
+#               ;;
+#   esac
+#   if [[ -n "$BROWSER" && "$1" = (http|https)://* ]]; then
+#     "$BROWSER" "$@"
+#     return
+#   fi
+#   ${=open_cmd} "$@" &>/dev/null
+# }
+
+# source ~/.zsh/dirhistory.plugin.zsh
+
+# cd to git repos
+alias cdg='cd ~/Desktop/git_repos'
+
+# Prettier Git Log
+alias gl='git log --graph --oneline --decorate'
+
+# Hacking go brrr
+alias hackall='docker run --rm -it bcbcarl/hollywood'
+
+# Open VSCode in current directory
+alias vsc='code .'
+
+# bat instead of cat
+alias cat='bat --paging=never --theme=OneHalfDark'
+
+# funni cli tool
+eval $(thefuck --alias)
+alias wtf='fuck'
+
+# Quartz
+alias kcb='npx quartz build --serve'
+alias kcd='npx quartz sync'
+
+# ==== PRE-PROMPT HOOK ==== #
+
+# Hooks for pre-prompt
+precmd() {
+	# Horizontal line
+	printf '—%.0s' {1..$COLUMNS} \n
+}
+
+# Empty function
+function do_nothing() {
+}
+
+bindkey "^K" do_nothing
+
+# Autocompletion
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# ==== PYTHON VENV ==== #
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+# ==== AUTOCOMPLETE ==== #
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
