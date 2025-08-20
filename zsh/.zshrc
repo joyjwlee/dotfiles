@@ -11,6 +11,9 @@ fi
 
 # fullscreen
 
+if [ -f ~/.zsh/zsh_utils ]; then
+  . ~/.zsh/zsh_utils
+fi
 if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
   if [ -f ~/.zsh/zsh_terminal ]; then
     . ~/.zsh/zsh_terminal
