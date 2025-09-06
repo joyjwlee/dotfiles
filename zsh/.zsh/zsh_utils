@@ -6,8 +6,10 @@
 # Horizontal line
 alias hr='echo -e "\033[1A\033[K\033[1A"; printf '—%.0s' {1..$COLUMNS}'
 
-# Replace `ls` with `eza --long`; used to be exa
-alias ls='eza --long'
+# eza aliases; used to be exa
+alias ls='eza -l'
+alias ll='eza -la'
+alias tree='eza -T'
 
 # My IP
 function myip {
