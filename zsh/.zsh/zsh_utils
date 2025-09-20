@@ -107,9 +107,9 @@ alias gst='git status'
 alias gsw='git switch'
 
 # Set full screen
-zoom_terminal() { 
+function fullscreen() { 
   local terminal_app=$(osascript -e 'tell application "System Events" to get name of first application process whose frontmost is true')
   osascript -e "tell application \"$terminal_app\" to set zoomed of front window to true" 2>/dev/null # || osascript -e 'tell application "System Events" to keystroke "f" using {command down, control down}'
 }
 
-zoom_terminal
+fullscreen

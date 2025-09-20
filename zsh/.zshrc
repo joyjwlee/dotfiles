@@ -5,12 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# function fullscreen {
-#   osascript -e "tell application '$TERM_PROGRAM' to set zoomed of front window to true"
-# }
-
-# fullscreen
-
 if [ -f ~/.zsh/zsh_utils ]; then
   . ~/.zsh/zsh_utils
 fi
