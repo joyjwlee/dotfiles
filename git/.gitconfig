@@ -1,6 +1,5 @@
-[user]
-	name = ${GIT_USER_NAME}
-	email = ${GIT_USER_EMAIL}
+[include]
+	path = ~/.config/git/private.config
 [alias]
 	pr = pull --rebase
 [pull]
