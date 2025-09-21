@@ -1,0 +1,27 @@
+[user]
+	name = ${GIT_USER_NAME}
+	email = ${GIT_USER_EMAIL}
+[alias]
+	pr = pull --rebase
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[advice]
+	detachedhead = false
+[push]
+	autosetupremote = true
+# [core]
+# 	editor = vim
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[pager]
+	log = false
+	diff = false
