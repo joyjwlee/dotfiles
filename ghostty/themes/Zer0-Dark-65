@@ -1,0 +1,33 @@
+# Zer0-Dark-65 for Ghostty
+
+
+## Theme
+background           = "#222338"
+selection-background = "#373950"
+foreground           = "#BDB99C"
+selection-foreground = "#D7D4B6"
+
+
+## Greyscale
+palette =  "0=#18192D"
+palette =  "8=#7F829C"
+palette =  "7=#BDB99C"
+palette = "15=#F4F0D1"
+
+
+## Colours
+palette =  "1=#EAA7A2"
+palette =  "2=#78C8A1"
+palette =  "3=#CDB867"
+palette =  "4=#70C4D8"
+palette =  "5=#E2A8BB"
+palette =  "6=#6AC8BC"
+
+
+## Bright Colours
+palette =  "9=#F8B4AE"
+palette = "10=#83D6AD"
+palette = "11=#DAC574"
+palette = "12=#7DD1E6"
+palette = "13=#F0B5C8"
+palette = "14=#75D6C8"
