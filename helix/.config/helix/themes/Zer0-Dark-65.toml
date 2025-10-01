@@ -1,0 +1,225 @@
+# Helix Theme
+#
+# pW      = OkLch(94, 4, 101)
+# pB      = OkLch(16, 4, 281)
+# colours = Munsell-HVC(5.0, 7.5, 6.0)
+#
+# This theme is heavily inspired by Ethan Schoonover's Solarized theme.
+#   - (https://ethanschoonover.com/solarized)
+#
+# The Syntax Highlighting borrows heavily from the Catppuccin theme.
+#   - (https://catppuccin.com/)
+#   - (https://github.com/nvim-treesitter/nvim-treesitter/blob/master/CONTRIBUTING.md)
+#   - (https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/integrations/treesitter.lua)
+#   - (https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/groups/syntax.lua)
+
+
+
+## UI
+"ui"                       = {fg = "fg4", bg = "bg0"}
+"ui.cursor"                = {bg = "bg4", modifiers = ["slow_blink"]}
+"ui.cursor.insert"         = {bg = "bg4", modifiers = ["slow_blink"]}
+"ui.cursor.primary.insert" = {bg = "bg4", modifiers = ["slow_blink"]}
+"ui.cursor.match"          = {fg = "magenta", bg = "bg2", modifiers = ["slow_blink"], underline = {color = "magenta", style = "line"}}
+"ui.selection"             = {bg = "bg2"}
+"ui.statusline"            = {fg = "fg4", bg = "bg1"}
+"ui.linenr"                = {fg = "bg4"}
+"ui.linenr.selected"       = {fg = "fg4"}
+"ui.text.directory"        = {fg = "blue"}
+"ui.text.focus"            = {bg = "bg2", modifiers = ["bold"]}
+"ui.menu"                  = {fg = "fg4", bg = "bg1"}
+"ui.menu.selected"         = {fg = "bg5", bg = "bg3"}
+"ui.debug.breakpoint"      = {fg = "red"}
+"ui.debug.active"          = {fg = "yellow"}
+"ui.popup"                 = {bg = "bg1"}
+
+
+
+## Markup Headings
+"markup.heading.1" = {fg = "indigo", modifiers = ["bold"], underline = {color = "indigo", style = "double_line"}}
+"markup.heading.2" = {fg = "cyan", modifiers = ["bold"], underline = {color = "blue", style = "line"}}
+"markup.heading.3" = {fg = "olive", modifiers = ["bold"]}
+"markup.heading.4" = {fg = "orange"}
+"markup.heading.5" = {fg = "magenta"}
+"markup.heading.6" = {fg = "gray"}
+
+
+
+## Tags
+"tag"           = {fg = "violet"}
+"tag.attribute" = {fg = "cyan", modifiers = ["italic"]}
+"tag.delimiter" = {fg = "cyan"}
+
+
+
+## Diffs
+"diff.plus"  = {fg = "green"}
+"diff.minus" = {fg = "red"}
+"diff.delta" = {fg = "blue"}
+
+
+
+## Diagnostics
+"error"                  = {fg = "red"}
+"diagnostic.error"       = {bg = "bg0", underline = {color = "red", style = "curl"}}
+"warning"                = {fg = "orange"}
+"diagnostic.warning"     = {bg = "bg0", underline = {color = "orange", style = "curl"}}
+"diagnostic.deprecated"  = {bg = "bg0", underline = {color = "yellow", style = "curl"}}
+"diagnostic.unnecessary" = {bg = "bg0", underline = {color = "olive", style = "curl"}}
+"hint"                   = {fg = "green"}
+"diagnostic.hint"        = {bg = "bg0", underline = {color = "green", style = "curl"}}
+"info"                   = {fg = "blue"}
+"diagnostic.info"        = {bg = "bg0", underline = {color = "blue", style = "curl"}}
+
+
+
+## Coding Syntax
+
+
+### Identifiers
+"variable"           = {fg = "gray"}
+"variable.builtin"   = {fg = "red"}    # Variable names that are defined by the languages, like this or self.
+"variable.parameter" = {fg = "orange"} # For parameters of a function.
+"variable.member"    = {fg = "indigo"} # For fields.
+
+"constant"         = {fg = "orange"}
+"constant.builtin" = {fg = "orange"}
+"constant.macro"   = {fg = "violet"}
+
+"module" = {fg = "indigo", modifiers = ["italic"]} # For identifiers referring to modules and namespaces.
+"label"  = {fg = "cyan"}                           # For labels: label: in C and :label: in Lua.
+
+
+### Literals
+"string"                = {fg = "green"}
+"string.documentation"  = {fg = "cyan"}                                                       # For strings documenting code (e.g. Python docstrings).
+"string.regexp"         = {fg = "orange"}
+"string.escape"         = {fg = "magenta"}
+"string.special"        = {fg = "magenta"}                                                    # other special strings (e.g. dates)
+"string.special.path"   = {fg = "blue"}                                                       # filenames
+"string.special.symbol" = {fg = "orange"}                                                     # symbols or atoms
+"string.special.url"    = {fg = "blue", modifiers = ["italic"], underline = {style = "line"}} # URLs, links, and emails
+
+"character"         = {fg = "cyan"}
+"character.special" = {fg = "magenta"} # special characters (e.g. wildcards)
+
+"boolean"      = {fg = "orange"}
+"number"       = {fg = "orange"}
+"number.float" = {fg = "orange"}
+
+
+### Types
+"type"            = {fg = "yellow"}
+"type.builtin"    = {fg = "yellow", modifiers = ["italic"]} # For builtin types.
+"type.definition" = {fg = "yellow"}
+
+"attribute" = {fg = "orange"} # attribute annotations (e.g. Python decorators)
+"property"  = {fg = "indigo"} # Same as TSField.
+
+
+### Functions
+"function"         = {fg = "blue"}   # For function (calls and definitions).
+"function.builtin" = {fg = "orange"}
+"function.call"    = {fg = "blue"}
+"function.macro"   = {fg = "cyan"}   # For macro defined functions (calls and definitions)
+
+"function.method"      = {fg = "blue"} # For method definitions.
+"function.method.call" = {fg = "blue"} # For method calls.
+
+"constructor" = {fg = "cyan"} # For constructor calls and definitions
+"operator"    = {fg = "cyan"} # For any operator: +, but also -> and * in C.
+
+
+### Keywords
+"keyword"           = {fg = "violet"}
+"keyword.modifier"  = {fg = "violet"} # `const`, `static`, `public`, etc.
+"keyword.type"      = {fg = "violet"} # `struct`, `enum`, etc.
+"keyword.coroutine" = {fg = "violet"}
+"keyword.function"  = {fg = "violet"}
+"keyword.operator"  = {fg = "cyan"}   # For new keyword operator
+"keyword.import"    = {fg = "violet"}
+"keyword.repeat"    = {fg = "violet"}
+"keyword.return"    = {fg = "violet"}
+"keyword.debug"     = {fg = "violet"}
+"keyword.exception" = {fg = "violet"}
+
+"keyword.conditional"         = {fg = "violet"}
+"keyword.conditional.ternary" = {fg = "cyan"}
+
+"keyword.directive"        = {fg = "magenta"} # various preprocessor directives & shebangs
+"keyword.directive.define" = {fg = "magenta"}
+"keyword.export"           = {fg = "cyan"}
+
+
+### Punctuation
+"punctuation.delimiter" = {fg = "gray"}    # For delimiters (e.g. `;` / `.` / `,`).
+"punctuation.bracket"   = {fg = "gray"}    # For brackets and parenthesis.
+"punctuation.special"   = {fg = "magenta"} # For special punctuation that does not fall in the categories before (e.g. `{}` in string interpolation).
+
+
+### Comments
+"comment"               = {fg = "bg5", modifiers = ["italic"]}
+"comment.documentation" = {fg = "bg5"}
+
+"comment.error"   = {fg = "bg5", bg = "red"}
+"comment.warning" = {fg = "bg5", bg = "orange"}
+"comment.hint"    = {fg = "bg5", bg = "green"}
+"comment.todo"    = {fg = "bg5", bg = "magenta"}
+"comment.note"    = {fg = "bg5", bg = "magenta"}
+
+
+### Markup
+"markup"               = {fg = "gray"}                             # For strings considered text in a markup language.
+"markup.bold"          = {fg = "orange", modifiers = ["bold"]}
+"markup.italic"        = {fg = "yellow", modifiers = ["italic"]}
+"markup.strikethrough" = {fg = "red", modifiers = ["crossed_out"]}
+"markup.underline"     = {underline = {style = "line"}}
+"markup.heading"       = {fg = "blue", modifiers = ["bold"]}       # titles like: # Example
+
+"markup.math"             = {fg = "blue"}    # math environments (e.g. `$ ... $` in LaTeX)
+"markup.quote"            = {fg = "violet"}  # block quotes
+"markup.environment"      = {fg = "magenta"} # Text environments of markup languages
+"markup.environment.name" = {fg = "blue"}    # Text indicating the type of an environment
+
+"markup.link"       = {fg = "blue", modifiers = ["bold"]}                                 # text references, footnotes, citations, etc.
+"markup.link.label" = {fg = "cyan"}                                                       # link, reference descriptions
+"markup.link.url"   = {fg = "blue", modifiers = ["italic"], underline = {style = "line"}}
+
+"markup.raw" = {fg = "indigo"} # Used for inline code in markdown and for doc in python (""")
+
+"markup.list"           = {fg = "magenta"}
+"markup.list.checked"   = {fg = "green"}
+"markup.list.unchecked" = {fg = "yellow"}
+
+
+
+## Palette: Zer0-Dark-65
+[palette]
+
+	"bg0" = "#222338"
+	"bg1" = "#26283E"
+	"bg2" = "#373950"
+	"bg3" = "#3C3E55"
+
+	"bg4" = "#4E5068"
+	"bg5" = "#B3B6D2"
+
+	"fg0" = "#F4F0D1"
+	"fg1" = "#EDE9CA"
+	"fg2" = "#D7D4B6"
+	"fg3" = "#D1CEB0"
+
+	"fg4" = "#BDB99C"
+	"fg5" = "#575339"
+
+	"gray"    = "#B8B8B8"
+	"magenta" = "#E2A8BB"
+	"red"     = "#EAA7A2"
+	"orange"  = "#E6AC81"
+	"yellow"  = "#CDB867"
+	"olive"   = "#ADC16F"
+	"green"   = "#78C8A1"
+	"cyan"    = "#6AC8BC"
+	"blue"    = "#70C4D8"
+	"indigo"  = "#9DBAE2"
+	"violet"  = "#C6AFD8"

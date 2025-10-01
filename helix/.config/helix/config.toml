@@ -1,0 +1,21 @@
+# Helix Config
+
+"theme" = "Zer0-Dark-65"
+
+[editor]
+	"scroll-lines"            = 1
+	"end-of-line-diagnostics" = "hint"
+
+	[editor.cursor-shape]
+		"insert" = "bar"
+		"normal" = "block"
+		"select" = "underline"
+
+	[editor.inline-diagnostics]
+		"cursor-line" = "info"
+
+	[editor.soft-wrap]
+		"enable" = true
+
+	[editor.auto-save]
+		"after-delay.enable" = true
