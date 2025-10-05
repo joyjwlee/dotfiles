@@ -1,0 +1,23 @@
+# Yazi Theme
+
+
+[mgr]
+	cwd             = {fg = "#B3B6D2"}
+	hovered         = {bg = "#373950", bold = true}
+	preview_hovered = {bg = "#373950", bold = true}
+	border_style    = {fg = "#4E5068"}
+
+
+[mode]
+	normal_main = {bg = "#26283E"}
+	normal_alt  = {bg = "#26283E"}
+	select_main = {bg = "#26283E"}
+	select_alt  = {bg = "#26283E"}
+	unset_main  = {bg = "#26283E"}
+	unset_alt   = {bg = "#26283E"}
+
+
+[status]
+	overall   = {bg = "#26283E"}
+	sep_left  = {open = "", close = ""}
+	sep_right = {open = "", close = ""}

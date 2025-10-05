@@ -1,0 +1,22 @@
+# Yazi Config
+
+
+[mgr]
+	show_hidden = true
+	ratio       = [10, 26, 16]
+
+
+[preview]
+	image_delay = 0
+
+
+[opener]
+	play = [{run = 'open "$@"', orphan = true, for = "macos"}]
+
+
+[open]
+	prepend_rules = [{mime = "video/*", use = "play"}]
+
+
+[input]
+	cursor_blink = true
