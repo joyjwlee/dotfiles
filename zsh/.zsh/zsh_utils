@@ -119,11 +119,11 @@ if [ -f "$HOME/.env" ]; then
     export $(grep -v '^#' $HOME/.env | xargs)
 fi
 
-# Backing up .MOV files in Downloads to external drive
-mvvid() {
+# Move files in Downloads to external drive
+mvf() {
   local file="$1"
   if [ -z "$file" ]; then
-    echo "Usage: mvvid <filename>"
+    echo "Usage: mvf <filename>"
     return 1
   fi
 
@@ -137,4 +137,35 @@ mvvid() {
 
   # rsync -ah --progress "$src" "$dest" && rm "$src"
   rsync -ah --progress --remove-source-files "$src" "$dest"
+}
+
+# Move directories (folders) to external drive
+mvdir() {
+  local src="$1"
+  local dest="$2"
+
+  # Must provide a source
+  if [ -z "$src" ]; then
+    echo "Usage: mvdir <source_directory> [destination_directory]"
+    return 1
+  fi
+
+  # Default destination
+  if [ -z "$dest" ]; then
+    dest="/Volumes/Expansion"
+  fi
+
+  # error checks
+  if [ ! -d "$src" ]; then
+    echo "Error: source directory does not exist: $src"
+    return 1
+  fi
+
+  if [ ! -d "$dest" ]; then
+    echo "Error: destination directory does not exist: $dest"
+    return 1
+  fi
+
+  echo "Moving $src → $dest..."
+  rsync -ah --progress "$src" "$dest" && rm -rf "$src"
 }
