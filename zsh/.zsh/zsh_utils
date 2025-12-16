@@ -62,6 +62,9 @@ function open_command() {
 # cd to git repos
 alias cdg='cd ~/Desktop/git_repos'
 
+# cd to external drive
+alias cdd='cd /Volumes/Expansion'
+
 # Prettier Git Log
 alias gl='git log --graph --oneline --decorate'
 
@@ -121,22 +124,25 @@ fi
 
 # Move files in Downloads to external drive
 mvf() {
-  local file="$1"
-  if [ -z "$file" ]; then
-    echo "Usage: mvf <filename>"
+  if [ "$#" -eq 0 ]; then
+    echo "Usage: mvf <file1> [file2 ...]"
     return 1
   fi
 
-  local src="$HOME/Downloads/$file"
+  local src
   local dest="/Volumes/Expansion/photos"
 
-  if [ ! -f "$src" ]; then
-    echo "Error: $src does not exist."
-    return 1
-  fi
+  for file in "$@"; do
+    src="$HOME/Downloads/$file"
 
-  # rsync -ah --progress "$src" "$dest" && rm "$src"
-  rsync -ah --progress --remove-source-files "$src" "$dest"
+    if [ ! -f "$src" ]; then
+      echo "Error: $src does not exist."
+      continue
+    fi
+
+    # rsync -ah --progress "$src" "$dest" && rm "$src"
+    rsync -ah --progress --remove-source-files "$src" "$dest"
+  done
 }
 
 # Move directories (folders) to external drive
